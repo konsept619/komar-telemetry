@@ -31,16 +31,14 @@ def crsf_crc(payload):
 
 def send_imu_with_timestamp_as_crsf(timestamp_us, ax, ay, az, gx, gy, gz, mx, my, mz, tmp):
     payload_id = 0xF0
-    # pewność: timestamp jako uint32
-    timestamp_us = int(timestamp_us) & 0xFFFFFFFF
+    timestamp_us = int(timestamp_us) & 0xFFFFFFFF #ensure timestamp is uint32
     L = [ax, ay, az, gx, gy, gz, mx, my, mz, tmp]
-    L = [clamp_to_float32(x) for x in L]  # zabezpieczenie zakresu
+    L = [clamp_to_float32(x) for x in L]  
     payload = struct.pack('<BIffffffffff', payload_id, timestamp_us, *L)
     print(timestamp_us, *L)  # debug
     frame = struct.pack('<BB', 0xC8, len(payload)) + payload
     crc = crsf_crc(frame[2:])   
     frame += bytes([crc])
-    print(list(frame)) # debug
     ser.write(frame)
 
 try:

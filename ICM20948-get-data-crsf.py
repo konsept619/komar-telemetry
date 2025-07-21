@@ -18,9 +18,9 @@ def crsf_crc(payload):
         crc ^= b
     return crc
 
-def send_imu_with_timestamp_as_crsf(timestamp_us, az):
+def send_imu_with_timestamp_as_crsf(timestamp_us, ax, ay, az, gx, gy, gz, mx, my, mz, tmp):
     payload_id = 0xF0
-    payload = struct.pack('<BIf', payload_id, timestamp_us, az)
+    payload = struct.pack('<BIfffffffffff', payload_id, timestamp_us, ax, ay, az, gx, gy, gz, mx, my, mz, tmp)
     frame = struct.pack('<BB', 0xC8, len(payload)) + payload
     crc = crsf_crc(frame[2:])   
     frame += bytes([crc])
@@ -53,7 +53,11 @@ try:
             writer.writerow(data_row)
 
         
-        send_imu_with_timestamp_as_crsf(timestamp_us, float(az))
+        send_imu_with_timestamp_as_crsf(timestamp_us, float(ax), float(ay), float(az),
+                                        float(gx), float(gy), float(gz),
+                                        float(mx), float(my), float(mz),
+                                        float(tmp))
+
 
         print(f"Accel: {ax:.2f}, {ay:.2f}, {az:.2f} g")
         print(f"Gyro: {gx:.2f}, {gy:.2f}, {gz:.2f} dps")

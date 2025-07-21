@@ -24,6 +24,7 @@ def send_imu_with_timestamp_as_crsf(timestamp_us, ax, ay, az, gx, gy, gz, mx, my
     frame = struct.pack('<BB', 0xC8, len(payload)) + payload
     crc = crsf_crc(frame[2:])   
     frame += bytes([crc])
+    print(list(frame)) #for debugging
     ser.write(frame)
 
 try:

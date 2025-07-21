@@ -64,7 +64,7 @@ try:
         print(f"Mag: {mx:.2f}, {my:.2f}, {mz:.2f} uT")
         print(f"Temp: {tmp:.2f}")
         print(f"Timestamp: {timestamp}, us={timestamp_us}")
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 except KeyboardInterrupt:
     ser.close()

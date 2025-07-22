@@ -10,7 +10,7 @@ This repository is part of an experimental and amateur project related to a smal
 
 ## Knowledge Base
 ### Infrastructure
-This diagram show information flow and protocols used in projects. </br> 
+This diagram show information flow and protocols used in project. </br> 
 <img title="Diagram of telemetry infrastructe" src="/images/rocket-infra.png">
 
 ### IMU Axes

@@ -10,9 +10,10 @@ This repository is part of an experimental and amateur project related to a smal
 
 ## Knowledge Base
 ### Infrastructure
+This diagram show information flow and protocols used in projects. </br> 
 <img title="Diagram of telemetry infrastructe" src="/images/rocket-infra.png">
 
 ### IMU Axes
 It is important to understand how IMU interprets axes and rotation. </br>
-<img title="ICM20948 axes"  src="/images/IMU-axis.png">
+<img title="ICM20948 axes" src="/images/IMU-axis.png">
 

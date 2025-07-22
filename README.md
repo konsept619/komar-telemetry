@@ -9,6 +9,10 @@ This repository is part of an experimental and amateur project related to a smal
 - ERLS-R24-D
 
 ## Knowledge Base
+### Infrastructure
+<img title="Diagram of telemetry infrastructe" src="/images/rocket-infra.png">
+
 ### IMU Axes
 It is important to understand how IMU interprets axes and rotation. </br>
 <img title="ICM20948 axes"  src="/images/IMU-axis.png">
+
